@@ -18,7 +18,7 @@ const Home = () => {
   }, [])
 
   const fetchBanner = async() =>{
-    await axios.get('http://localhost:6001/fetch-banner').then(
+    await axios.get('http://localhost:5000/fetch-banner').then(
       (response)=>{
         setBannerImg(response.data);
       }

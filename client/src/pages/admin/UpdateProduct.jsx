@@ -32,7 +32,7 @@ const UpdateProduct = () => {
 
 
   const fetchProduct = async() =>{
-    await axios.get(`http://localhost:6001/fetch-product-details/${id}`).then(
+    await axios.get(`http://localhost:5000/fetch-product-details/${id}`).then(
       (response)=>{
         setProductName(response.data.title);
         setProductDescription(response.data.description);
@@ -51,7 +51,7 @@ const UpdateProduct = () => {
 
 
   const fetchCategories = async () =>{
-    await axios.get('http://localhost:6001/fetch-categories').then(
+    await axios.get('http://localhost:5000/fetch-categories').then(
       (response)=>{
         setAvailableCategories(response.data);
       }
@@ -72,7 +72,7 @@ const UpdateProduct = () => {
 
 
   const handleUpdateProduct = async() =>{
-    await axios.put(`http://localhost:6001/update-product/${id}`, {productName, productDescription, productMainImg, productCarousel: [productCarouselImg1, productCarouselImg2, productCarouselImg3], productSizes, productGender, productCategory, productNewCategory, productPrice, productDiscount}).then(
+    await axios.put(`http://localhost:5000/update-product/${id}`, {productName, productDescription, productMainImg, productCarousel: [productCarouselImg1, productCarouselImg2, productCarouselImg3], productSizes, productGender, productCategory, productNewCategory, productPrice, productDiscount}).then(
       (response)=>{
         alert("product updated");
         setProductName('');

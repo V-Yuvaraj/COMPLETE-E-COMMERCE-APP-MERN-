@@ -28,7 +28,7 @@ const Navbar = () => {
 
   const fetchData = async() =>{
 
-    await axios.get('http://localhost:6001/fetch-categories').then(
+    await axios.get('http://localhost:5000/fetch-categories').then(
       (response)=>{
         setCategories(response.data);
       }
@@ -52,6 +52,7 @@ const Navbar = () => {
 
           <div className="navbar">
           <h3 onClick={()=> navigate('')}>ShopEZ</h3>
+          
           <div className="nav-content">
             <div className="nav-search">
               <input type="text" name="nav-search" id="nav-search" placeholder='Search Electronics, Fashion, mobiles, etc.,' onChange={(e)=>setProductSearch(e.target.value)} />
@@ -75,7 +76,9 @@ const Navbar = () => {
             {usertype === 'customer' ?
             
                 <div className="navbar">
+                   {/* <img src="https://i.ibb.co/BVVYPZY/cartlogo.jpg" alt="kk" /> */}
                   <h3 onClick={()=> navigate('')}>ShopEZ</h3>
+                 
                   <div className="nav-content">
                     <div className="nav-search">
                       <input type="text" name="nav-search" id="nav-search" placeholder='Search Electronics, Fashion, mobiles, etc.,' onChange={(e)=>setProductSearch(e.target.value)} />

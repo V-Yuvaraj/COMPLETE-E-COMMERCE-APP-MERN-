@@ -30,7 +30,7 @@ useEffect(()=>{
 },[])
 
 const fetchProduct = async () =>{
-    await axios.get(`http://localhost:6001/fetch-product-details/${id}`).then(
+    await axios.get(`http://localhost:5000/fetch-product-details/${id}`).then(
         (response)=>{
             setProductName(response.data.title);
             setProductDescription(response.data.description);
@@ -59,7 +59,7 @@ const [paymentMethod, setPaymentMethod] = useState('');
 
 
 const buyNow = async() =>{
-    await axios.post('http://localhost:6001/buy-product',{userId, name, email, mobile, address, pincode, title: productName, description: productDescription, mainImg: productMainImg, size, quantity: productQuantity, price: productPrice, discount: productDiscount, paymentMethod: paymentMethod, orderDate: new Date()}).then(
+    await axios.post('http://localhost:5000/buy-product',{userId, name, email, mobile, address, pincode, title: productName, description: productDescription, mainImg: productMainImg, size, quantity: productQuantity, price: productPrice, discount: productDiscount, paymentMethod: paymentMethod, orderDate: new Date()}).then(
         (response)=>{
             alert('Order placed!!');
             navigate('/profile');
@@ -71,7 +71,7 @@ const buyNow = async() =>{
 
 
 const handleAddToCart = async() =>{
-    await axios.post('http://localhost:6001/add-to-cart', {userId, title: productName, description: productDescription, mainImg: productMainImg, size, quantity: productQuantity, price: productPrice, discount: productDiscount}).then(
+    await axios.post('http://localhost:5000/add-to-cart', {userId, title: productName, description: productDescription, mainImg: productMainImg, size, quantity: productQuantity, price: productPrice, discount: productDiscount}).then(
         (response)=>{
             alert("product added to cart!!");
             navigate('/cart');

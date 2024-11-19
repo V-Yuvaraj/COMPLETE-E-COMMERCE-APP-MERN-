@@ -3,6 +3,11 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
+dotenv.config();
+
+
+  
 import {Admin, Cart, Orders, Product, User } from './Schema.js'
 
 
@@ -11,14 +16,26 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json({limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000'  // replace with your frontend URL
+  }));
+  
 
-const PORT = 6001;
+const PORT=process.env.PORT || 5000;
 
-mongoose.connect('mongodb://localhost:27017/shopEZ',{
+mongoose.connect('mongodb+srv://yuvaraj1624j:Yuva1624%40@clustershopez.al3t2.mongodb.net/ShopEZ-Ecommerce-App',{
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).then(()=>{
+    // mongodb+srv://yuvaraj1624j:Yuva1624%40@cluster0.cxqjo.mongodb.net/ShopEZ-Ecommerce-App
+    // mongodb+srv://yuvaraj1624j:<db_password>@clustershopez.al3t2.mongodb.net/
+    // mongodb+srv://yuvaraj1624j:Yuva1624%40@clustershopez.al3t2.mongodb.net/ShopEZ-Ecommerce-App
+})
+// .then(() => console.log('Connected to MongoDB Atlas'))
+// .catch((e)=> console.log(`Error in db connection ${e}`));
+.then(()=>{
+    console.log('Connected to MongoDB Atlas')
+    console.log(`running in the port ${PORT}`);
 
     app.post('/register', async (req, res) => {
         const { username, email, usertype, password } = req.body;

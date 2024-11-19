@@ -12,13 +12,13 @@ const AllUsers = () => {
   }, [])
 
   const fetchUsersData = async() =>{
-    await axios.get('http://localhost:6001/fetch-users').then(
+    await axios.get('http://localhost:5000/fetch-users').then(
       (response)=>{
         setUsers(response.data.filter(user=> user.usertype === 'customer'));
       }
     )
 
-    await axios.get('http://localhost:6001/fetch-orders').then(
+    await axios.get('http://localhost:5000/fetch-orders').then(
       (response)=>{
         setOrders(response.data);
       }

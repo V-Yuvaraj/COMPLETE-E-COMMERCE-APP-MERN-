@@ -17,7 +17,7 @@ const Cart = () => {
   const fetchCart = async() =>{
     const userId = localStorage.getItem('userId');
     if(userId){
-      await axios.get('http://localhost:6001/fetch-cart').then(
+      await axios.get('http://localhost:5000/fetch-cart').then(
         (response)=>{
           setCartItems(response.data.filter(item=> item.userId === userId).reverse());
         }
@@ -26,7 +26,7 @@ const Cart = () => {
   }
 
   const increaseCartQuantity = async(id) =>{
-    await axios.put('http://localhost:6001/increase-cart-quantity', {id}).then(
+    await axios.put('http://localhost:5000/increase-cart-quantity', {id}).then(
       (response)=>{
         fetchCart();
       }
@@ -37,7 +37,7 @@ const Cart = () => {
 
   const decreaseCartQuantity = async(id, quantity) =>{
     if(quantity > 1){
-      await axios.put('http://localhost:6001/decrease-cart-quantity', {id}).then(
+      await axios.put('http://localhost:5000/decrease-cart-quantity', {id}).then(
         (response)=>{
           fetchCart();
         }
@@ -51,7 +51,7 @@ const Cart = () => {
   }
 
   const removeItem = async(id) =>{
-      await axios.put('http://localhost:6001/remove-item', {id}).then(
+      await axios.put('http://localhost:5000/remove-item', {id}).then(
         (response)=>{
           fetchCart();
         }
@@ -90,7 +90,7 @@ const Cart = () => {
   const userId = localStorage.getItem('userId');
   const placeOrder = async() =>{
     if(cartItems.length > 0){
-        await axios.post('http://localhost:6001/place-cart-order', {userId, name, mobile, email, address, pincode, paymentMethod, orderDate: new Date()}).then(
+        await axios.post('http://localhost:5000/place-cart-order', {userId, name, mobile, email, address, pincode, paymentMethod, orderDate: new Date()}).then(
           (response)=>{
             alert('Order placed!!');
             setName('');

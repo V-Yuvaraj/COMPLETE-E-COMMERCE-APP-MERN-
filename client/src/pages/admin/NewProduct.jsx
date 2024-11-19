@@ -26,7 +26,7 @@ const NewProduct = () => {
     fetchCategories();
   },[])
   const fetchCategories = async () =>{
-    await axios.get('http://localhost:6001/fetch-categories').then(
+    await axios.get('http://localhost:5000/fetch-categories').then(
       (response)=>{
         setAvailableCategories(response.data);
       }
@@ -47,7 +47,7 @@ const NewProduct = () => {
 
 
   const handleNewProduct = async() =>{
-    await axios.post('http://localhost:6001/add-new-product', {productName, productDescription, productMainImg, productCarousel: [productCarouselImg1, productCarouselImg2, productCarouselImg3], productSizes, productGender, productCategory, productNewCategory, productPrice, productDiscount}).then(
+    await axios.post('http://localhost:5000/add-new-product', {productName, productDescription, productMainImg, productCarousel: [productCarouselImg1, productCarouselImg2, productCarouselImg3], productSizes, productGender, productCategory, productNewCategory, productPrice, productDiscount}).then(
       (response)=>{
         alert("product added");
         setProductName('');
@@ -170,8 +170,13 @@ const NewProduct = () => {
                   {AvailableCategories.map((category)=>{
                     return(
                         <option value={category}>{category}</option>
-                    )
-                  })}
+                      )
+                    })}
+                    <option value="Fashion">Fashion</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="mobiles">mobiles</option>
+                    <option value="Groceries">Groceries</option>
+                    <option value="Sports-Equipment">Sports Equipment</option>
                   <option value="new category">New category</option>
                 </select>
                 <label htmlFor="floatingNewProduct5">Category</label>

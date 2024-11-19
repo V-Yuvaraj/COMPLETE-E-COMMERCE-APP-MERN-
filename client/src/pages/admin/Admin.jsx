@@ -23,17 +23,17 @@ const Admin = () => {
   }, [])
 
   const fetchCountData = async() =>{
-    await axios.get('http://localhost:6001/fetch-users').then(
+    await axios.get('http://localhost:5000/fetch-users').then(
       (response)=>{
         setUserCount(response.data.length - 1);
       }
     )
-    await axios.get('http://localhost:6001/fetch-products').then(
+    await axios.get('http://localhost:5000/fetch-products').then(
       (response)=>{
         setProductCount(response.data.length);
       }
     )
-    await axios.get('http://localhost:6001/fetch-orders').then(
+    await axios.get('http://localhost:5000/fetch-orders').then(
       (response)=>{
         setOrdersCount(response.data.length);
       }
@@ -47,7 +47,7 @@ const Admin = () => {
 
   const [banner, setBanner] = useState('');
   const updateBanner = async() =>{
-    await axios.post('http://localhost:6001/update-banner', {banner}).then(
+    await axios.post('http://localhost:5000/update-banner', {banner}).then(
       (response)=>{
         alert("Banner updated");
         setBanner('');

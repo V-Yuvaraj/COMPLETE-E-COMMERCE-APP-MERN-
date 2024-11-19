@@ -19,7 +19,7 @@ const Profile = () => {
   },[])
 
   const fetchOrders = async () =>{
-    await axios.get(`http://localhost:6001/fetch-orders`).then(
+    await axios.get(`http://localhost:5000/fetch-orders`).then(
       (response)=>{
         setOrders(response.data.filter(order=> order.userId === userId).reverse());
       }
@@ -28,7 +28,7 @@ const Profile = () => {
 
 
   const  cancelOrder = async(id) =>{
-    await axios.put('http://localhost:6001/cancel-order', {id}).then(
+    await axios.put('http://localhost:5000/cancel-order', {id}).then(
       (response)=>{
         alert("Order cancelled!!");
         fetchOrders();
